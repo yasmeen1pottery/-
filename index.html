@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيت الفخار | House of Pottery</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="adminHamburger" style="display: none; position: fixed; top: 15px; right: 15px; z-index: 1001; background: var(--text-primary); color: white; border: none; padding: 10px 15px; border-radius: 8px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">☰ <span data-i18n="adminHamburgerText">الإدارة</span></button>
+    
+    <button id="customerHamburger" class="customer-only" style="display: none; position: fixed; top: 15px; right: 15px; z-index: 1001; background: var(--text-primary); color: white; border: none; padding: 10px 15px; border-radius: 8px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">☰ <span data-i18n="customerHamburgerText">حسابي</span></button>
+
+    <!-- Customer Menu Modal -->
+    <div class="modal-overlay" id="customerMenuModal">
+        <div class="glass-card modal-content" style="max-width: 300px; text-align: center;">
+            <button class="close-btn close-modal" style="right: auto; left: 1rem;">&times;</button>
+            <h3 style="color: var(--text-primary); margin-bottom: 1.5rem;" data-i18n="customerMenuTitle">قائمة العميل</h3>
+            <button class="btn-primary" id="menuOpenProfileBtn" style="width: 100%; margin-bottom: 1rem;"><span data-i18n="manageAccountBtn">إدارة الحساب</span> 👤</button>
+            <button class="btn-primary" id="menuOpenTrackingBtn" style="width: 100%; margin-bottom: 1rem; background: var(--text-secondary);"><span data-i18n="trackOrderBtn">تتبع طلبك</span> 📍</button>
+        </div>
+    </div>
+    <div class="top-auth-bar">
+        <button class="btn-lang" id="langToggleBtn">EN</button>
+        <button class="btn-login" id="unifiedLoginBtn" data-i18n="login">تسجيل الدخول</button>
+    </div>
+
+    <!-- Gradient Background Elements -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+        <ul>
+            <li><a href="#home" class="active"><i class="icon-home"></i><span data-i18n="navHome">الرئيسية</span></a></li>
+            <li><a href="#products"><i class="icon-pot"></i><span data-i18n="navProducts">المنتجات</span></a></li>
+            <li class="nav-dropdown">
+                <a href="#about"><i class="icon-info"></i><span data-i18n="navAbout">من نحن</span></a>
+                <div class="nav-dropdown-content glass-card">
+                    <p data-i18n="aboutDesc">نحن منصة متخصصة في تسويق أرقى قطع الفخار الخاصة بالتحف والمطبخ والديكور وحاجات مشابهة لهذا الوصف. نسعى لتقديم تشكيلة مميزة من الفخاريات التي تلبي كافة احتياجاتك، وتعكس عبق التراث بلمسة عصرية.</p>
+                </div>
+            </li>
+            <li class="nav-dropdown">
+                <a href="#contact"><i class="icon-mail"></i><span data-i18n="navContact">تواصل معنا</span></a>
+                <div class="nav-dropdown-content glass-card" style="text-align: center; min-width: 250px;">
+                    <div style="margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;"><span style="font-size: 1.5rem;">📧</span> <a href="mailto:info@bayt-alfakhar.com" style="color: var(--text-primary); text-decoration: none;">info@bayt-alfakhar.com</a></div>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;"><span style="font-size: 1.5rem;">📞</span> <a href="tel:+201001234567" style="color: var(--text-primary); text-decoration: none; direction: ltr;">+20 100 123 4567</a></div>
+                </div>
+            </li>
+            <li id="navAdmin" style="display: none;">
+                <a href="#adminDashboard" id="openAdminNav"><i class="icon-dashboard"></i><span data-i18n="navAdmin">لوحة التحكم</span></a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="glass-container hero-content" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+                <img src="logo.png" alt="Bayt Al-Fakhar Logo" style="width: 250px; margin-bottom: 1rem;">
+                <h1 class="title-en">BAYT AL-FAKHAR</h1>
+                <h2 class="title-ar" data-i18n="heroTitle">بَيْتُ الفَخَّار</h2>
+                <p class="subtitle" style="font-family: var(--font-ar); font-size: 1.8rem; color: var(--text-secondary); margin-bottom: 0;" data-i18n="heroSubtitle">• تُراثٌ وَعَصْرِيَّة •</p>
+                <p style="letter-spacing: 3px; font-weight: 600; font-size: 0.9rem; margin-bottom: 2rem; color: var(--text-primary);" data-i18n="heroTagline">ONLINE POTTERY MARKET</p>
+                <button class="btn-primary" data-i18n="shopNow">تسوق الآن</button>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="glass-blob">
+                    <!-- Main Hero Image (imge1.png) -->
+                    <div class="image-placeholder main-product-placeholder" style="padding: 0; border: none; background: transparent;">
+                        <img src="imge1.png" alt="تشكيلة فخار رئيسية" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard Modal (Hidden by default) -->
+    <div class="modal-overlay" id="adminDashboardOverlay">
+        <div class="glass-card modal-content" style="max-width: 1000px; width: 95%; height: 90vh; overflow-y: auto; padding: 2rem; position: relative;">
+            <button class="close-btn close-modal" style="right: auto; left: 1.5rem;">&times;</button>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
+                <h2 class="section-title" style="color: #d9534f; margin-bottom: 0;" data-i18n="adminTitle">لوحة تحكم الإدارة والمخزون</h2>
+                <button class="btn-primary" id="adminLogoutBtn" style="background: #d9534f; padding: 0.5rem 1rem;" data-i18n="logoutBtnText">تسجيل الخروج</button>
+            </div>
+            
+            <div class="admin-tabs" style="display: flex; gap: 1rem; margin-bottom: 2rem; justify-content: center; flex-wrap: wrap; border-bottom: 2px solid var(--glass-border); padding-bottom: 1rem;">
+                <button class="admin-tab-btn active" data-tab="adminOverview" data-i18n="adminTabOverview">نظرة عامة</button>
+                <button class="admin-tab-btn" data-tab="adminUsers" data-i18n="adminTabUsers">العملاء</button>
+                <button class="admin-tab-btn" data-tab="adminOrdersTab" data-i18n="adminTabOrders">الطلبات</button>
+                <button class="admin-tab-btn" data-tab="adminInventory" data-i18n="adminTabInventory">المخزون</button>
+                <button class="admin-tab-btn" data-tab="adminSettings" data-i18n="adminTabSettings">الإعدادات</button>
+            </div>
+
+            <!-- Tab: Overview -->
+            <div id="adminOverview" class="admin-tab-content active">
+                <!-- Quick Stats -->
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                    <div class="glass-card" style="flex: 1; min-width: 200px; padding: 1.5rem; text-align: center; border-left: 5px solid #4CAF50;">
+                        <h3 style="color: var(--text-secondary); margin-bottom: 0.5rem;" data-i18n="statRevenue">إجمالي المبيعات</h3>
+                        <p style="font-size: 2rem; font-weight: bold; color: var(--text-primary); font-family: var(--font-en);"><span id="adminTotalRevenue">0</span> ج.م</p>
+                    </div>
+                    <div class="glass-card" style="flex: 1; min-width: 200px; padding: 1.5rem; text-align: center; border-left: 5px solid #2196F3;">
+                        <h3 style="color: var(--text-secondary); margin-bottom: 0.5rem;" data-i18n="statOrders">الطلبات المنجزة</h3>
+                        <p style="font-size: 2rem; font-weight: bold; color: var(--text-primary); font-family: var(--font-en);" id="adminTotalOrders">0</p>
+                    </div>
+                    <div class="glass-card" style="flex: 1; min-width: 200px; padding: 1.5rem; text-align: center; border-left: 5px solid #e6b800;">
+                        <h3 style="color: var(--text-secondary); margin-bottom: 0.5rem;" data-i18n="statCustomers">العملاء المسجلين</h3>
+                        <p style="font-size: 2rem; font-weight: bold; color: var(--text-primary); font-family: var(--font-en);" id="adminTotalCustomers">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Users -->
+            <div id="adminUsers" class="admin-tab-content" style="display: none;">
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1.5rem; border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem; color: var(--text-primary);" data-i18n="adminCustomers">سجل العملاء</h3>
+                    <div class="admin-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="colName">الاسم</th>
+                                    <th data-i18n="colEmail">البريد الإلكتروني</th>
+                                    <th data-i18n="colPoints">النقاط</th>
+                                    <th data-i18n="colJoinDate">تاريخ التسجيل</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminUsersBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Orders -->
+            <div id="adminOrdersTab" class="admin-tab-content" style="display: none;">
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1.5rem; border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem; color: var(--text-primary);" data-i18n="adminOrders">طلبات العملاء الجديدة</h3>
+                    <div class="admin-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="colOrderNum">رقم الطلب</th>
+                                    <th data-i18n="colCustomerData">بيانات العميل</th>
+                                    <th data-i18n="colProducts">المنتجات المطلوبة</th>
+                                    <th data-i18n="colRemainingStock">المتبقي بالمخزن</th>
+                                    <th data-i18n="colTotal">الإجمالي</th>
+                                    <th data-i18n="colDate">التاريخ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminOrdersBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Inventory -->
+            <div id="adminInventory" class="admin-tab-content" style="display: none;">
+                <div class="glass-card" style="padding: 2rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 2rem; align-items: center;">
+                        <h3 style="color: var(--text-primary);" data-i18n="inventoryTitle">مخزون المنتجات</h3>
+                        <button class="btn-primary" id="addBtnAdmin" style="background: #5cb85c;" data-i18n="addProductBtn">+ إضافة منتج جديد</button>
+                    </div>
+                    <div class="admin-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="invImg">صورة</th>
+                                    <th data-i18n="invName">اسم المنتج</th>
+                                    <th data-i18n="invPrice">السعر</th>
+                                    <th data-i18n="invRemaining">المتبقي</th>
+                                    <th data-i18n="invSold">المباع</th>
+                                    <th data-i18n="invActions">إجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Settings -->
+            <div id="adminSettings" class="admin-tab-content" style="display: none;">
+                <div class="glass-card" style="padding: 2rem;">
+                    <h3 style="margin-bottom: 1.5rem; border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem; color: var(--text-primary);" data-i18n="paySettingsTitle">إعدادات الدفع</h3>
+                    <form id="paymentSettingsForm" style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-family: var(--font-ar);" data-i18n="setVodafone">رقم فودافون كاش:</label>
+                            <input type="text" id="settingVodafone" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: monospace; font-size: 1.1rem; direction: ltr;" required>
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-family: var(--font-ar);" data-i18n="setInstapay">عنوان إنستا باي:</label>
+                            <input type="text" id="settingInstapay" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: monospace; font-size: 1.1rem; direction: ltr;" required>
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-family: var(--font-ar);" data-i18n="setBank">رقم الحساب البنكي:</label>
+                            <input type="text" id="settingBank" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: monospace; font-size: 1.1rem; direction: ltr;" required>
+                        </div>
+                        <button type="submit" class="btn-primary" style="background: #4CAF50; margin-top: 1rem;" data-i18n="saveSettingsBtn">حفظ الإعدادات</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Pottery Map Section -->
+        <section id="pottery-map" class="pottery-map" style="padding: 5rem 10%;">
+            <h2 class="section-title"><span data-i18n="mapTitle">رحلة الفخار المصري</span> <br><span style="font-size: 1.5rem; color: var(--text-secondary); font-family: var(--font-ar);" data-i18n="mapSubtitle">اكتشف أسرار الحرفة من شمال مصر لجنوبها</span></h2>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start;">
+                <!-- Map / Buttons area -->
+                <div class="glass-card" style="flex: 1; min-width: 300px; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center; justify-content: center; min-height: 400px;">
+                    <p style="font-family: var(--font-ar); color: var(--text-secondary); font-size: 1.2rem; text-align: center; margin-bottom: 2rem;" data-i18n="mapInstruction">اضغط على المنطقة لاستكشاف الفخار الخاص بها</p>
+                    
+                    <button class="map-btn active" data-region="fayoum" data-i18n="mapFayoumBtn">الفيوم (قرية تونس)</button>
+                    <button class="map-btn" data-region="fustat" data-i18n="mapFustatBtn">القاهرة (الفسطاط)</button>
+                    <button class="map-btn" data-region="qena" data-i18n="mapQenaBtn">قنا</button>
+                </div>
+
+                <!-- Display area -->
+                <div class="glass-card" id="regionDisplay" style="flex: 2; min-width: 300px; padding: 2rem; display: flex; flex-direction: column; align-items: center; text-align: center; transition: opacity 0.4s ease;">
+                    <img id="regionImg" src="fayoum.png" alt="فخار الفيوم" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 16px; margin-bottom: 1.5rem; box-shadow: var(--glass-shadow);">
+                    <h3 id="regionTitle" style="font-family: var(--font-ar); color: var(--text-primary); font-size: 2rem; margin-bottom: 1rem;">فخار قرية تونس (الفيوم)</h3>
+                    <p id="regionDesc" style="font-family: var(--font-ar); color: var(--text-secondary); font-size: 1.2rem; line-height: 1.8;">
+                        يتميز فخار الفيوم بألوانه الزاهية والمبهجة ورسوماته العفوية التي تعكس طبيعة الريف المصري الجميلة من طيور ونخيل.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products">
+            <h2 class="section-title"><span data-i18n="productsTitle">أحدث التشكيلات</span> <br><span style="font-size: 1.5rem; color: var(--text-secondary); font-family: var(--font-ar);" data-i18n="productsSubtitle">أصالة الماضي ولمسة الحاضر</span></h2>
+            
+            <div class="products-controls glass-container" style="margin-bottom: 2rem; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+                <!-- Search Bar -->
+                <div class="search-bar" style="width: 100%; max-width: 500px; display: flex; gap: 0.5rem;">
+                    <input type="text" id="searchInput" placeholder="ابحث عن منتج..." data-i18n-placeholder="searchPlaceholder" style="flex: 1; padding: 0.8rem; border: 1px solid var(--glass-border); border-radius: 12px; background: rgba(255, 255, 255, 0.5); font-family: var(--font-ar); outline: none;">
+                </div>
+                <!-- Categories -->
+                <div class="categories" id="categoryButtons" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+                    <button class="category-btn active" data-category="all" data-i18n="catAll">الكل</button>
+                    <button class="category-btn" data-category="طواجن" data-i18n="catTagine">طواجن</button>
+                    <button class="category-btn" data-category="أطباق" data-i18n="catPlates">أطباق ومج</button>
+                    <button class="category-btn" data-category="ديكور" data-i18n="catDecor">ديكور وتحف</button>
+                </div>
+            </div>
+
+            <div class="products-grid" id="productsContainer">
+                <!-- Products will be dynamically generated here by JS -->
+            </div>
+        </section>
+
+        <!-- Delivery Section -->
+        <section id="delivery" class="delivery-section" style="padding: 4rem 10%; text-align: center;">
+            <div class="glass-card" style="padding: 3rem; max-width: 800px; margin: 0 auto; overflow: hidden;">
+                <div class="moving-truck" style="font-size: 4rem; margin-bottom: 1rem; display: inline-block;">🚚</div>
+                <h2 style="font-family: var(--font-ar); color: var(--text-primary); font-size: 2.5rem; margin-bottom: 1.5rem;" data-i18n="deliveryTitle">خدمة التوصيل المضمون</h2>
+                <p style="font-family: var(--font-ar); color: var(--text-secondary); font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;" data-i18n="deliveryDesc">
+                    نوفر خدمة توصيل سريعة وآمنة لجميع المحافظات. نضمن تغليف جميع القطع الفخارية بعناية فائقة باستخدام مواد مقاومة للصدمات لضمان وصولها إليكم بحالة ممتازة. (تضاف رسوم التوصيل ٥٠ ج.م تلقائياً عند إتمام الطلب).
+                </p>
+                <button class="btn-primary" id="requestDeliveryBtn" style="font-size: 1.2rem; padding: 1rem 3rem;" data-i18n="reqDeliveryBtn">اطلب التوصيل الآن</button>
+            </div>
+        </section>
+
+        <!-- B2B Wholesale Section -->
+        <section id="wholesale" class="wholesale-section" style="padding: 2rem 10%; margin-bottom: 2rem;">
+            <div class="glass-card" style="padding: 3rem; text-align: center; border: 2px solid var(--text-secondary); background: transparent;">
+                <h2 style="font-family: var(--font-ar); color: var(--text-primary); font-size: 2.5rem; margin-bottom: 1rem;" data-i18n="b2bTitle">للمطاعم والمشاريع الصغيرة (طلبات الجملة)</h2>
+                <p style="font-family: var(--font-ar); color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.8;" data-i18n="b2bDesc">
+                    ارتقِ بتجربة عملائك مع أدوات التقديم الفخارية. نقدم خصومات تصل إلى 20% لطلبات الجملة للمطاعم. التقديم في الفخار يضفي طابعاً مميزاً ويحافظ على حرارة الأكل لفترة أطول.
+                </p>
+                <button class="btn-primary" id="openFeasibilityBtn" style="font-size: 1.1rem; background: var(--text-secondary);" data-i18n="feasibilityBtn">احسب التكلفة (دراسة جدوى مبسطة)</button>
+            </div>
+        </section>
+
+        <!-- Packaging Section -->
+        <section id="packaging" class="packaging-section" style="padding: 2rem 10%; text-align: center; background: linear-gradient(0deg, transparent, rgba(248, 245, 238, 0.5));">
+            <div class="glass-card" style="padding: 2rem; max-width: 600px; margin: 0 auto; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" id="packagingBtn">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">📦</div>
+                <h3 style="font-family: var(--font-ar); color: var(--text-primary); font-size: 1.8rem; margin-bottom: 1rem;" data-i18n="packTitle">تغليفنا الآمن والمميز</h3>
+                <p style="font-family: var(--font-ar); color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 0;" data-i18n="packDesc">اضغط هنا لرؤية كيف نحافظ على منتجاتك بأمان وبطريقة صديقة للبيئة.</p>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="reviews">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2 class="section-title" style="margin-bottom: 0;" data-i18n="reviewsTitle">آراء عملائنا</h2>
+                <button class="btn-primary" id="addReviewBtn" style="font-size: 0.9rem;" data-i18n="addReviewBtn">+ أضف تقييمك</button>
+            </div>
+            <div class="reviews-grid">
+                <div class="glass-card review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"جودة الفخار ممتازة والتغليف كان رائعاً يحافظ على القطع من الكسر. أوصي بشدة بالتعامل معهم."</p>
+                    <h4 class="reviewer-name">- سارة أحمد</h4>
+                </div>
+                <div class="glass-card review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"الطواجن الحديثة ممتازة في الطبخ وشكلها أنيق جداً على السفرة. تصاميم عصرية رائعة."</p>
+                    <h4 class="reviewer-name">- محمد طارق</h4>
+                </div>
+                <div class="glass-card review-card">
+                    <div class="stars">★★★★☆</div>
+                    <p class="review-text">"المنتجات جميلة جداً وأسعارها مناسبة مقارنة بالجودة والجهد اليدوي المبذول."</p>
+                    <h4 class="reviewer-name">- ندى كمال</h4>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="text-align: center; padding: 2rem; color: var(--text-secondary); font-family: var(--font-ar); border-top: 1px solid var(--glass-border); margin-top: 2rem;">
+        <p>&copy; 2026 بيت الفخار. جميع الحقوق محفوظة.</p>
+        <span id="openAdminLoginBtn" style="cursor: pointer; opacity: 0.3; font-size: 0.8rem;" title="بوابة الإدارة">🔒</span>
+    </footer>
+
+    <!-- Floating Cart Button -->
+    <div class="cart-btn" id="cartBtn">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer glass-container" id="cartDrawer">
+        <button class="close-btn" id="closeCart">&times;</button>
+        <h2>سلة المشتريات</h2>
+        <div class="cart-items" id="cartItems">
+            <p style="text-align:center; margin-top:2rem; color:var(--text-secondary);">السلة فارغة حالياً</p>
+        </div>
+        <div style="padding: 1rem; border-top: 1px dashed rgba(0,0,0,0.2);">
+            <label for="shippingRegion" style="font-family: var(--font-ar); color: var(--text-primary); margin-bottom: 0.5rem; display: block; font-size: 0.9rem;">المحافظة (لتحديد مصاريف الشحن):</label>
+            <select id="shippingRegion" style="padding: 0.8rem; border: 1px solid var(--glass-border); border-radius: 8px; width: 100%; font-family: var(--font-ar); outline: none; background: rgba(255, 255, 255, 0.5); cursor: pointer;">
+                <option value="50">القاهرة والجيزة (50 ج.م)</option>
+                <option value="70">الإسكندرية ووجه بحري (70 ج.م)</option>
+                <option value="100">محافظات الصعيد (100 ج.م)</option>
+            </select>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">الإجمالي: <span id="totalPrice">0</span> ج.م</div>
+            <button class="btn-primary checkout-btn" id="checkoutBtn" style="width: 100%;">إتمام الدفع</button>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- My Account Modal -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="glass-card modal-content" style="max-width: 600px; text-align: right; width: 90%;">
+            <button class="close-btn close-modal" style="right: auto; left: 1rem;">&times;</button>
+            <h2 style="color: var(--text-primary); text-align: center; margin-bottom: 1.5rem;" data-i18n="myAccountTitle">إدارة الحساب</h2>
+            
+            <div class="account-tabs" style="display: flex; gap: 1rem; border-bottom: 1px solid var(--glass-border); margin-bottom: 1.5rem; justify-content: center;">
+                <button class="account-tab-btn active" data-tab="accDetails" data-i18n="tabDetails">بياناتي</button>
+                <button class="account-tab-btn" data-tab="accOrders" data-i18n="tabOrders">طلباتي</button>
+                <button class="account-tab-btn" data-tab="accPoints" data-i18n="tabPoints">نقاط الولاء</button>
+            </div>
+
+            <!-- Tab: Details -->
+            <div class="account-tab-content active" id="accDetails">
+                <form id="updateProfileForm">
+                    <label data-i18n="labelName" style="display:block; margin-bottom:0.5rem; font-family: var(--font-ar);">الاسم الكامل:</label>
+                    <input type="text" id="profName" required style="width: 100%; margin-bottom: 1rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar); background: rgba(255,255,255,0.5);">
+                    
+                    <label data-i18n="labelEmail" style="display:block; margin-bottom:0.5rem; font-family: var(--font-ar);">البريد الإلكتروني:</label>
+                    <input type="email" id="profEmail" required style="width: 100%; margin-bottom: 1rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar); background: rgba(255,255,255,0.5);">
+                    
+                    <label data-i18n="labelPhone" style="display:block; margin-bottom:0.5rem; font-family: var(--font-ar);">رقم الهاتف:</label>
+                    <input type="text" id="profPhone" style="width: 100%; margin-bottom: 1.5rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar); background: rgba(255,255,255,0.5);">
+                    
+                    <label style="display:block; margin-bottom:0.5rem; font-family: var(--font-ar);">كلمة المرور الجديدة (اختياري):</label>
+                    <input type="password" id="profPassword" placeholder="اتركه فارغاً إذا لم ترغب بتغييره" data-i18n-placeholder="leaveEmptyPass" style="width: 100%; margin-bottom: 1.5rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar); background: rgba(255,255,255,0.5);">
+
+                    <button type="submit" class="btn-primary" style="width: 100%;" data-i18n="saveChanges">حفظ التعديلات</button>
+                </form>
+            </div>
+
+            <!-- Tab: Orders -->
+            <div class="account-tab-content" id="accOrders" style="display: none; max-height: 300px; overflow-y: auto;">
+                <div id="userOrdersList" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Tab: Points -->
+            <div class="account-tab-content" id="accPoints" style="display: none; text-align: center;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">🏆</div>
+                <h3 style="font-family: var(--font-ar); font-size: 1.5rem; margin-bottom: 1rem;"><span data-i18n="yourPoints">رصيد نقاطك:</span> <span id="userPointsDisplay" style="color: #e6b800; font-size: 2rem;">0</span> <span data-i18n="pointsWord">نقطة</span></h3>
+                <p style="font-family: var(--font-ar); color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;" data-i18n="pointsDesc">
+                    احصل على نقطة واحدة لكل 10 جنيهات تنفقها في متجرنا.<br>
+                    شاركنا صورة لأكلتك المميزة في منتجاتنا واحصل على <strong>20 نقطة</strong> إضافية!
+                </p>
+                <button class="btn-primary" id="openSharePhotoBtn" style="width: 100%; margin-bottom: 1rem; background: #e6b800; color: #3d2b1f;" data-i18n="sharePhotoBtn">📸 شارك صورة لطبقك واربح 20 نقطة</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Photo Modal -->
+    <div class="modal-overlay" id="sharePhotoModal">
+        <div class="glass-card modal-content" style="max-width: 400px; text-align: center;">
+            <button class="close-btn close-modal">&times;</button>
+            <h2 style="color: var(--text-primary);">شارك صورتك</h2>
+            <form id="sharePhotoForm">
+                <input type="file" accept="image/*" required style="padding: 1rem; background: rgba(255,255,255,0.5); width: 100%; border-radius: 12px; margin-bottom: 1rem; font-family: var(--font-ar);">
+                <textarea placeholder="اكتب تعليقاً على الصورة..." data-i18n-placeholder="writeComment" rows="3" style="padding: 1rem; border: 1px solid var(--glass-border); border-radius: 12px; background: rgba(255, 255, 255, 0.5); font-family: var(--font-ar); outline: none; width: 100%; box-sizing: border-box; margin-bottom: 1rem;"></textarea>
+                <button type="submit" class="btn-primary" style="width: 100%;">رفع الصورة وكسب 20 نقطة</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Certificate of Authenticity Modal -->
+    <div class="modal-overlay" id="certificateModal" style="z-index: 4000;">
+        <div class="glass-card modal-content certificate-card" style="max-width: 700px; padding: 4rem 3rem; background: #fffdf5; border: 5px double #d4af37; text-align: center; position: relative;">
+            <button class="close-btn close-modal" style="right: auto; left: 1rem; top: 1rem;">&times;</button>
+            <div class="cert-stamp">✔ أصلي</div>
+            <h1 style="font-family: var(--font-ar); color: #d4af37; font-size: 3rem; margin-bottom: 0.5rem; border-bottom: 2px solid #d4af37; display: inline-block; padding-bottom: 0.5rem;">شهادة أصالة وجودة</h1>
+            <h3 style="font-family: var(--font-en); color: var(--text-primary); margin-bottom: 2rem; letter-spacing: 2px;">CERTIFICATE OF AUTHENTICITY</h3>
+            
+            <p style="font-family: var(--font-ar); color: var(--text-primary); font-size: 1.3rem; line-height: 2;">
+                تشهد إدارة <strong>بيت الفخار</strong> بأن المنتجات المشتراة في الطلب رقم <br>
+                <span id="certOrderId" style="font-family: monospace; font-weight: bold; font-size: 1.5rem; color: #8c553d;">#123456</span><br>
+                للسيد/ة: <strong id="certCustomerName" style="color: #8c553d; font-size: 1.5rem;">الاسم</strong><br>
+                هي منتجات فخارية أصلية 100%، صُنعت يدوياً بأيادي حرفيين مصريين مهرة، وتم استخدام خامات طبيعية خالية من أي مواد كيميائية ضارة.
+            </p>
+            
+            <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); font-family: var(--font-ar); color: var(--text-secondary);">
+                <div>التاريخ: <span id="certDate"></span></div>
+                <div>التوقيع: <em style="font-family: var(--font-en);">Bayt Al-Fakhar</em></div>
+            </div>
+            <button class="btn-primary" style="margin-top: 2rem; background: #d4af37; color: #fff;" onclick="window.print()">🖨️ طباعة الشهادة</button>
+        </div>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div class="modal-overlay" id="receiptModal" style="z-index: 4000;">
+        <div class="glass-card modal-content" style="max-width: 400px; padding: 2rem; text-align: center; font-family: monospace; background: #fff; color: #000;">
+            <button class="close-btn close-modal" style="color: #000;">&times;</button>
+            <h2 style="font-family: var(--font-en); font-weight: bold; border-bottom: 2px dashed #000; padding-bottom: 1rem; margin-bottom: 1rem;">BAYT AL-FAKHAR<br><span style="font-size: 1rem; font-weight: normal; font-family: var(--font-ar);">إيصال دفع إلكتروني</span></h2>
+            <div style="text-align: right; margin-bottom: 1rem; line-height: 1.6; font-size: 1.1rem; font-family: var(--font-ar);">
+                <div>رقم الطلب: <span id="receiptOrderId" style="font-family: monospace;"></span></div>
+                <div>التاريخ: <span id="receiptDate" style="font-family: monospace;"></span></div>
+                <div>العميل: <span id="receiptName"></span></div>
+                <div>طريقة الدفع: <span id="receiptMethod"></span></div>
+            </div>
+            <div style="border-top: 2px dashed #000; border-bottom: 2px dashed #000; padding: 1rem 0; margin-bottom: 1rem; text-align: right; font-family: var(--font-ar);">
+                <div id="receiptItems"></div>
+                <div style="margin-top: 0.5rem; border-top: 1px solid #ccc; padding-top: 0.5rem;">رسوم الشحن: <span id="receiptShipping" style="font-family: monospace;"></span> ج.م</div>
+            </div>
+            <div style="text-align: left; font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; font-family: var(--font-ar);">
+                الإجمالي: <span id="receiptTotal" style="font-family: monospace;"></span> ج.م
+            </div>
+            <p style="font-family: var(--font-ar); font-size: 1rem;">شكراً لتسوقكم معنا!</p>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                <button class="btn-primary" style="flex: 1;" onclick="window.print()">طباعة الإيصال</button>
+                <button class="btn-primary" style="flex: 1; background: #d4af37; color: #fff;" id="openCertFromReceiptBtn">عرض شهادة الأصالة</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div class="modal-overlay" id="adminLoginModal">
+        <div class="glass-card modal-content" style="max-width: 400px; text-align: center;">
+            <button class="close-btn close-modal" style="right: auto; left: 1rem;">&times;</button>
+            <h2 style="color: var(--text-primary); margin-bottom: 1.5rem;">دخول الإدارة</h2>
+            <form id="adminForm">
+                <input type="text" placeholder="اسم المستخدم (Admin)" data-i18n-placeholder="adminUser" required style="width: 100%; margin-bottom: 1rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar);">
+                <input type="password" placeholder="كلمة المرور" data-i18n-placeholder="password" required style="width: 100%; margin-bottom: 1.5rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar);">
+                <button type="submit" class="btn-primary" style="width: 100%; background: var(--text-secondary);">دخول</button>
+            </form>
+        </div>
+    </div>
+    <!-- Feasibility Study Modal -->
+    <div class="modal-overlay" id="feasibilityModal">
+        <div class="glass-card modal-content" style="max-width: 500px;">
+            <button class="close-btn close-modal">&times;</button>
+            <h2 style="color: var(--text-primary);">دراسة جدوى مبسطة</h2>
+            <p style="font-family: var(--font-ar); color: var(--text-secondary); text-align: center; margin-bottom: 1.5rem;">أدخل عدد القطع المطلوبة لمطعمك (طواجن وأطباق) لترى التوفير المتوقع.</p>
+            <form id="feasibilityForm">
+                <input type="number" id="f_items" placeholder="عدد القطع المطلوبة (مثال: 100)" data-i18n-placeholder="f_items_pl" required min="1">
+                <input type="number" id="f_avgPrice" placeholder="متوسط سعر القطعة التقديري (ج.م) - اختياري" data-i18n-placeholder="f_avgPrice_pl" value="250">
+                <button type="submit" class="btn-primary" style="width: 100%; margin-bottom: 1.5rem;">احسب التكلفة</button>
+            </form>
+            <div id="feasibilityResult" style="display: none; background: rgba(255,255,255,0.6); padding: 1rem; border-radius: 12px; border: 1px solid #d4af37; font-family: var(--font-ar);">
+                <p style="margin-bottom: 0.5rem;">التكلفة الإجمالية المعتادة: <span id="f_total" style="text-decoration: line-through; color: #d9534f;"></span> ج.م</p>
+                <p style="margin-bottom: 0.5rem; font-size: 1.2rem; font-weight: bold; color: #4CAF50;">التكلفة بعد خصم الجملة (20%): <span id="f_discounted"></span> ج.م</p>
+                <p style="margin-bottom: 0.5rem; color: var(--text-primary);">الوفر المتوقع: <strong id="f_savings" style="color: #4CAF50;"></strong> ج.م</p>
+                <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 1rem 0;">
+                <h4 style="color: var(--text-secondary); margin-bottom: 0.5rem;">فوائد إضافية:</h4>
+                <ul style="text-align: right; font-size: 0.95rem; line-height: 1.6; color: var(--text-primary); padding-right: 1rem;">
+                    <li>عمر افتراضي أطول بسبب متانة الفخار المعالج للحرارة.</li>
+                    <li>توفير في غاز التدفئة لاحتفاظ الفخار بالحرارة لمدة تزيد عن 45 دقيقة.</li>
+                    <li>تجربة بصرية تراثية ترفع من قيمة أطباقك المادية (Premium Pricing).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Packaging Modal -->
+    <div class="modal-overlay" id="packagingModal">
+        <div class="glass-card modal-content" style="max-width: 700px;">
+            <button class="close-btn close-modal">&times;</button>
+            <h2 style="color: var(--text-primary);">تغليف آمن وصديق للبيئة</h2>
+            <div class="gallery-container" style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem; margin-bottom: 1rem;">
+                <img src="ai_timeline_packaging.png" alt="التغليف الآمن 1" class="lightbox-trigger" style="min-width: 250px; height: 250px; object-fit: cover; border-radius: 12px; box-shadow: var(--glass-shadow); cursor: zoom-in;">
+                <img src="ai_timeline_shipping.png" alt="التغليف الآمن 2" class="lightbox-trigger" style="min-width: 250px; height: 250px; object-fit: cover; border-radius: 12px; box-shadow: var(--glass-shadow); cursor: zoom-in;">
+            </div>
+            <p style="font-family: var(--font-ar); color: var(--text-secondary); font-size: 1.2rem; line-height: 1.8; text-align: center;">
+                نحرص على وصول قطع الفخار إليكم بأمان تام. نستخدم مواد تغليف صديقة للبيئة مثل الورق المقوى والقش لحمايتها من الصدمات، ونزينها بنقوش تراثية تعكس أصالة منتجاتنا.
+            </p>
+        </div>
+    </div>
+
+    <!-- Order Tracking Modal -->
+    <div class="modal-overlay" id="trackingModal">
+        <div class="glass-card modal-content" style="max-width: 600px;">
+            <button class="close-btn close-modal">&times;</button>
+            <h2 style="color: var(--text-primary);">تتبع رحلة طلبك</h2>
+            <form id="trackingForm" style="margin-bottom: 2rem;">
+                <input type="text" id="trackOrderId" placeholder="أدخل رقم الطلب (مثال: #123456)" data-i18n-placeholder="trackOrder_pl" required style="text-align: center;">
+                <button type="submit" class="btn-primary" style="width: 100%;">تتبع الآن</button>
+            </form>
+            
+            <div id="trackingTimeline" style="display: none; text-align: right; padding-right: 1rem; font-family: var(--font-ar);">
+                <div class="timeline-step active">
+                    <div class="step-icon">🏺</div>
+                    <div class="step-content">
+                        <h4>مرحلة التشكيل</h4>
+                        <p>يتم تشكيل القطعة يدوياً على عجلة الفخار بعناية فائقة.</p>
+                        <img src="ai_timeline_shaping.png" class="timeline-img lightbox-trigger" alt="التشكيل">
+                    </div>
+                </div>
+                <div class="timeline-step active">
+                    <div class="step-icon">☀️</div>
+                    <div class="step-content">
+                        <h4>مرحلة التجفيف</h4>
+                        <p>تجفف القطعة في الهواء الطلق بشكل طبيعي لضمان قوتها.</p>
+                        <img src="ai_timeline_drying.png" class="timeline-img lightbox-trigger" alt="التجفيف">
+                    </div>
+                </div>
+                <div class="timeline-step current">
+                    <div class="step-icon">🔥</div>
+                    <div class="step-content">
+                        <h4>الحرق في الفرن</h4>
+                        <p>يتم حرق القطعة في أفران مخصصة لاكتساب الصلابة.</p>
+                        <img src="ai_timeline_kiln.png" class="timeline-img lightbox-trigger" alt="الحرق">
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-icon">📦</div>
+                    <div class="step-content">
+                        <h4>التغليف التراثي</h4>
+                        <p>يتم تغليف القطعة بأمان باستخدام القش والمواد الصديقة للبيئة.</p>
+                        <img src="ai_timeline_packaging.png" class="timeline-img lightbox-trigger" alt="التغليف">
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-icon">🚚</div>
+                    <div class="step-content">
+                        <h4>قيد التوصيل</h4>
+                        <p>الطلب مع مندوب الشحن في الطريق إليك.</p>
+                        <img src="ai_timeline_shipping.png" class="timeline-img lightbox-trigger" alt="التوصيل">
+                    </div>
+                </div>
+            </div>
+            <p id="trackingError" style="display: none; color: #d9534f; text-align: center; font-family: var(--font-ar); margin-top: 1rem;">رقم الطلب غير صحيح أو غير موجود.</p>
+        </div>
+    </div>
+
+    <!-- Unified Login Modal -->
+    <div class="modal-overlay" id="authSelectionModal">
+        <div class="glass-card modal-content" style="max-width: 400px; width: 90%; display: flex; flex-direction: column; gap: 1rem; position: relative; text-align: center;">
+            <button class="close-btn close-modal" style="right: auto; left: 1.5rem; z-index: 10;">&times;</button>
+            
+            <div class="auth-tabs" style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; justify-content: center; border-bottom: 1px solid var(--glass-border); flex-wrap: wrap;">
+                <button class="auth-tab-btn active" data-tab="authLogin">دخول كعميل</button>
+                <button class="auth-tab-btn" data-tab="authRegister">حساب جديد</button>
+            </div>
+            
+            <!-- Login Box -->
+            <div id="authLogin" class="auth-tab-content active">
+                <form id="customerLoginForm">
+                    <input type="email" id="loginEmail" list="savedEmails" placeholder="البريد الإلكتروني" data-i18n-placeholder="email" required autocomplete="email" style="width: 100%; margin-bottom: 1rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar);">
+                    <datalist id="savedEmails"></datalist>
+                    <input type="password" placeholder="كلمة المرور" data-i18n-placeholder="password" required autocomplete="current-password" style="width: 100%; margin-bottom: 1.5rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar);">
+                    <button type="submit" class="btn-primary" style="width: 100%;">دخول</button>
+                </form>
+            </div>
+
+            <!-- Register Box -->
+            <div id="authRegister" class="auth-tab-content" style="display: none;">
+                <form id="customerRegisterForm">
+                    <input type="text" id="regName" placeholder="الاسم الكامل" data-i18n-placeholder="fullName" required autocomplete="name" style="width: 100%; margin-bottom: 1rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar);">
+                    <input type="email" id="regEmail" placeholder="البريد الإلكتروني" data-i18n-placeholder="email" required autocomplete="email" style="width: 100%; margin-bottom: 1rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar);">
+                    <input type="text" id="regPhone" placeholder="رقم الهاتف (اختياري)" data-i18n-placeholder="phoneOpt" style="width: 100%; margin-bottom: 1rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar);">
+                    <input type="password" placeholder="كلمة المرور" data-i18n-placeholder="password" required autocomplete="new-password" style="width: 100%; margin-bottom: 1.5rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar);">
+                    <button type="submit" class="btn-primary" style="width: 100%;">إنشاء حساب جديد</button>
+                </form>
+            </div>
+
+
+            <button class="btn-primary" id="logoutBtnModal" style="width: 100%; background: #d9534f; margin-top: 1rem; display: none;">تسجيل الخروج</button>
+        </div>
+    </div>
+
+    <!-- Add Review Modal -->
+    <div class="modal-overlay" id="reviewModal">
+        <div class="glass-card modal-content">
+            <button class="close-btn close-modal">&times;</button>
+            <h2>إضافة تقييم</h2>
+            <form id="reviewForm">
+                <input type="text" id="reviewerName" placeholder="الاسم" required>
+                <textarea id="reviewText" placeholder="رأيك في المنتجات..." rows="4" style="padding: 1rem; border: 1px solid var(--glass-border); border-radius: 12px; background: rgba(255, 255, 255, 0.5); font-family: var(--font-ar); outline: none; width: 100%; box-sizing: border-box;" required></textarea>
+                <div style="display: flex; gap: 0.5rem; justify-content: center; font-size: 2rem; cursor: pointer;" id="starRating">
+                    <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+                </div>
+                <input type="hidden" id="reviewStars" value="5">
+                <button type="submit" class="btn-primary" style="width: 100%;">إرسال التقييم</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="glass-card modal-content" style="max-width: 500px;">
+            <button class="close-btn close-modal">&times;</button>
+            <h2>بيانات التوصيل والدفع</h2>
+            <form id="checkoutForm">
+                <input type="text" id="checkoutName" placeholder="الاسم الكامل" data-i18n-placeholder="fullName" required>
+                <input type="text" id="checkoutPhone" placeholder="رقم الهاتف" data-i18n-placeholder="phone" required>
+                <textarea id="checkoutAddress" placeholder="العنوان بالتفصيل" data-i18n-placeholder="fullAddress" rows="3" style="padding: 1rem; border: 1px solid var(--glass-border); border-radius: 12px; background: rgba(255, 255, 255, 0.5); font-family: var(--font-ar); outline: none; width: 100%; box-sizing: border-box;" required></textarea>
+                <input type="email" id="checkoutEmail" placeholder="البريد الإلكتروني (اختياري)" data-i18n-placeholder="emailOpt" style="width: 100%; margin-bottom: 1rem; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar); outline: none;">
+                <select id="checkoutPayment" style="padding: 1rem; border: 1px solid var(--glass-border); border-radius: 12px; background: rgba(255, 255, 255, 0.5); font-family: var(--font-ar); outline: none; width: 100%; margin-bottom: 1rem;" required>
+                    <option value="">اختر طريقة الدفع</option>
+                    <option value="cash">الدفع عند الاستلام</option>
+                    <option value="card">بطاقة ائتمان</option>
+                    <option value="instapay">إنستا باي (InstaPay)</option>
+                    <option value="vodafone">فودافون كاش</option>
+                    <option value="bank">تحويل بنكي</option>
+                </select>
+                <div id="paymentInstructions" style="display: none; margin-bottom: 1rem; text-align: right; background: rgba(248, 245, 238, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: var(--font-ar);">
+                    <p id="paymentInstText" style="margin-bottom: 0.5rem; color: var(--text-primary); font-weight: bold;"></p>
+                </div>
+                <div id="paymentScreenshotContainer" style="display: none; margin-bottom: 1rem; text-align: right;">
+                    <label style="display:block; margin-bottom:0.5rem; font-family: var(--font-ar); color: var(--text-primary); font-weight: bold;">أرفق صورة إيصال التحويل:</label>
+                    <input type="file" id="paymentScreenshot" accept="image/*" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px dashed var(--text-secondary); font-family: var(--font-ar); background: rgba(255,255,255,0.3);">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">تأكيد الطلب الآن</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div class="modal-overlay" id="productDetailsModal">
+        <div class="glass-card modal-content" style="max-width: 800px; width: 90%; display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start; text-align: right;">
+            <button class="close-btn close-modal" style="right: auto; left: 1.5rem;">&times;</button>
+            <div style="flex: 1; min-width: 300px;">
+                <img id="detailImg" src="" alt="Product Image" style="width: 100%; border-radius: 12px; object-fit: cover; box-shadow: var(--glass-shadow);">
+            </div>
+            <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 1rem;">
+                <h2 id="detailName" style="margin-bottom: 0; color: var(--text-primary); text-align: right;"></h2>
+                <p id="detailPrice" class="price" style="font-size: 1.5rem; color: var(--text-secondary);"></p>
+                <div class="stock-info" id="detailStock" style="align-self: flex-start;"></div>
+                <h4 style="font-family: var(--font-ar); border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem; margin-top: 1rem;">وصف المنتج:</h4>
+                <p id="detailDesc" style="font-family: var(--font-ar); color: var(--text-primary); line-height: 1.8; font-size: 1.1rem;"></p>
+                <div style="display: flex; gap: 1rem; align-items: center; margin-top: auto;">
+                    <div class="qty-controls" style="display: flex; align-items: center; background: rgba(255,255,255,0.5); border-radius: 8px; border: 1px solid var(--glass-border);">
+                        <button class="qty-btn" id="detailQtyMinus" style="padding: 0.5rem 1rem; border: none; background: transparent; cursor: pointer; font-size: 1.2rem; color: var(--text-primary);">-</button>
+                        <span id="detailQty" style="padding: 0.5rem; font-family: var(--font-en); font-weight: bold; width: 40px; text-align: center;">1</span>
+                        <button class="qty-btn" id="detailQtyPlus" style="padding: 0.5rem 1rem; border: none; background: transparent; cursor: pointer; font-size: 1.2rem; color: var(--text-primary);">+</button>
+                    </div>
+                    <button class="btn-primary" id="detailAddToCart" style="padding: 1rem; flex: 1;">أضف إلى السلة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Add/Edit Product Modal -->
+    <div class="modal-overlay" id="adminProductModal">
+        <div class="glass-card modal-content" style="max-width: 500px;">
+            <button class="close-btn close-modal">&times;</button>
+            <h2 id="adminProductModalTitle">إضافة منتج جديد</h2>
+            <form id="adminProductForm">
+                <input type="hidden" id="adminProductId">
+                <input type="text" id="adminProductName" placeholder="اسم المنتج" data-i18n-placeholder="prodName" required>
+                <input type="number" id="adminProductPrice" placeholder="السعر (ج.م)" data-i18n-placeholder="priceEgp" required>
+                <input type="number" id="adminProductStock" placeholder="الكمية المتاحة" data-i18n-placeholder="availQty" required>
+                <select id="adminProductCategory" style="padding: 1rem; border: 1px solid var(--glass-border); border-radius: 12px; background: rgba(255, 255, 255, 0.5); font-family: var(--font-ar); outline: none; width: 100%; margin-bottom: 1rem;" required>
+                    <option value="طواجن">طواجن</option>
+                    <option value="أطباق">أطباق ومج</option>
+                    <option value="ديكور">ديكور وتحف</option>
+                </select>
+                <div style="text-align: right; margin-bottom: 1rem;">
+                    <label style="display:block; margin-bottom:0.5rem; font-family: var(--font-ar); color: var(--text-primary); font-weight: bold;">صورة المنتج (اختياري - سيتم استخدام صورة افتراضية إن لم يتم الرفع):</label>
+                    <input type="file" id="adminProductImage" accept="image/*" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px dashed var(--text-secondary); font-family: var(--font-ar); background: rgba(255,255,255,0.3);">
+                </div>
+                <textarea id="adminProductDesc" placeholder="الوصف الدقيق للمنتج" rows="4" style="padding: 1rem; border: 1px solid var(--glass-border); border-radius: 12px; background: rgba(255, 255, 255, 0.5); font-family: var(--font-ar); outline: none; width: 100%; box-sizing: border-box; margin-bottom: 1rem;" required></textarea>
+                <button type="submit" class="btn-primary" style="width: 100%;">حفظ المنتج</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div class="modal-overlay" id="lightboxModal" style="z-index: 2000; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.85);">
+        <span class="close-btn close-modal" style="color: white; font-size: 3rem; right: 2rem; top: 1rem;">&times;</span>
+        <img id="lightboxImg" src="" alt="Product Image" style="max-width: 90%; max-height: 90vh; border-radius: 12px; object-fit: contain; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    </div>
+
+    <!-- Admin Screenshot Viewer Modal -->
+    <div class="modal-overlay" id="screenshotModal" style="z-index: 4500;">
+        <div class="glass-card modal-content" style="max-width: 500px; text-align: center;">
+            <button class="close-btn close-modal">&times;</button>
+            <h2 style="color: var(--text-primary); margin-bottom: 1rem; font-family: var(--font-ar);">صورة إيصال الدفع</h2>
+            <img id="screenshotDisplay" src="" style="width: 100%; border-radius: 12px; max-height: 70vh; object-fit: contain; margin-bottom: 1rem;">
+            <button class="btn-primary" id="approvePaymentBtn" style="width: 100%; background: #4CAF50; display: none;">✅ تأكيد الدفع</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
