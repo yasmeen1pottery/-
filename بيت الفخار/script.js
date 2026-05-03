@@ -66,7 +66,53 @@ document.addEventListener('DOMContentLoaded', () => {
             prodName: "Product Name",
             priceEgp: "Price (EGP)",
             availQty: "Available Quantity",
-            exactDesc: "Exact Product Description"
+            exactDesc: "Exact Product Description",
+            adminHamburgerText: "Admin",
+            customerHamburgerText: "My Account",
+            customerMenuTitle: "Customer Menu",
+            manageAccountBtn: "Manage Account",
+            trackOrderBtn: "Track Order",
+            logoutBtnText: "Logout",
+            adminTabOverview: "Overview",
+            adminTabUsers: "Customers",
+            adminTabOrders: "Orders",
+            adminTabInventory: "Inventory",
+            adminTabSettings: "Settings",
+            inventoryTitle: "Product Inventory",
+            addProductBtn: "+ Add New Product",
+            invImg: "Image",
+            invName: "Product Name",
+            invPrice: "Price",
+            invRemaining: "Remaining",
+            invSold: "Sold",
+            invActions: "Actions",
+            paySettingsTitle: "Payment Settings",
+            setVodafone: "Vodafone Cash No:",
+            setInstapay: "InstaPay Address:",
+            setBank: "Bank Account No:",
+            saveSettingsBtn: "Save Settings",
+            productsTitle: "Featured Products",
+            productsSubtitle: "Browse our latest pottery pieces crafted with love and care",
+            catAll: "All",
+            catTagine: "Tagines",
+            catPlates: "Plates",
+            catDecor: "Decor",
+            feasibilityBtn: "Feasibility Study for Restaurants",
+            packTitle: "Safe Heritage Packaging",
+            packDesc: "We use straw and natural materials to protect products and give them a distinctive heritage character.",
+            b2bTitle: "Special Wholesale & Restaurant Prices",
+            b2bDesc: "We offer discounts up to 20% when ordering quantities for restaurants and hotels.",
+            deliveryTitle: "Safe & Fast Delivery",
+            deliveryDesc: "Shipping to all governorates with a 100% safe delivery guarantee.",
+            mapTitle: "Pottery Crafting Map",
+            mapSubtitle: "Discover the most famous Egyptian villages specialized in heritage pottery making.",
+            mapInstruction: "Click on any red dot on the map for more details.",
+            mapFustatBtn: "Fustat (Cairo)",
+            mapFayoumBtn: "Tunis (Fayoum)",
+            mapQenaBtn: "Qena (Upper Egypt)",
+            reviewsTitle: "Customer Reviews",
+            addReviewBtn: "Add Review",
+            reqDeliveryBtn: "Request Delivery"
         },
         ar: {
             login: "تسجيل الدخول",
@@ -132,14 +178,179 @@ document.addEventListener('DOMContentLoaded', () => {
             prodName: "اسم المنتج",
             priceEgp: "السعر (ج.م)",
             availQty: "الكمية المتاحة",
-            exactDesc: "الوصف الدقيق للمنتج"
+            exactDesc: "الوصف الدقيق للمنتج",
+            adminHamburgerText: "الإدارة",
+            customerHamburgerText: "حسابي",
+            customerMenuTitle: "قائمة العميل",
+            manageAccountBtn: "إدارة الحساب",
+            trackOrderBtn: "تتبع طلبك",
+            logoutBtnText: "تسجيل الخروج",
+            adminTabOverview: "نظرة عامة",
+            adminTabUsers: "العملاء",
+            adminTabOrders: "الطلبات",
+            adminTabInventory: "المخزون",
+            adminTabSettings: "الإعدادات",
+            inventoryTitle: "مخزون المنتجات",
+            addProductBtn: "+ إضافة منتج جديد",
+            invImg: "صورة",
+            invName: "اسم المنتج",
+            invPrice: "السعر",
+            invRemaining: "المتبقي",
+            invSold: "المباع",
+            invActions: "إجراءات",
+            paySettingsTitle: "إعدادات الدفع",
+            setVodafone: "رقم فودافون كاش:",
+            setInstapay: "عنوان إنستا باي:",
+            setBank: "رقم الحساب البنكي:",
+            saveSettingsBtn: "حفظ الإعدادات",
+            productsTitle: "منتجاتنا المميزة",
+            productsSubtitle: "تصفح أحدث القطع الفخارية المصنوعة بحب وعناية",
+            catAll: "الكل",
+            catTagine: "طواجن",
+            catPlates: "أطباق",
+            catDecor: "ديكور",
+            feasibilityBtn: "دراسة جدوى للمطاعم",
+            packTitle: "تغليف تراثي آمن",
+            packDesc: "نستخدم القش والمواد الطبيعية لحماية المنتجات وإعطائها طابعاً تراثياً مميزاً.",
+            b2bTitle: "أسعار خاصة للجملة والمطاعم",
+            b2bDesc: "نوفر خصومات تصل إلى 20% عند طلب كميات للمطاعم والفنادق.",
+            deliveryTitle: "توصيل آمن وسريع",
+            deliveryDesc: "شحن لكافة محافظات الجمهورية مع ضمان استلام المنتج سليماً 100%.",
+            mapTitle: "خريطة صناعة الفخار",
+            mapSubtitle: "تعرف على أشهر القرى المصرية المتخصصة في صناعة الفخار التراثي.",
+            mapInstruction: "انقر على أي نقطة حمراء على الخريطة لتفاصيل أكثر.",
+            mapFustatBtn: "الفسطاط (القاهرة)",
+            mapFayoumBtn: "تونس (الفيوم)",
+            mapQenaBtn: "قنا (الصعيد)",
+            reviewsTitle: "آراء عملائنا",
+            addReviewBtn: "إضافة تقييم",
+            reqDeliveryBtn: "طلب توصيل"
         }
     };
 
     let currentLang = localStorage.getItem('siteLang') || 'ar';
     const langToggleBtn = document.getElementById('langToggleBtn');
 
+    const textTranslations = {
+        'بوابة الإدارة': 'Admin Portal',
+        'سلة المشتريات': 'Shopping Cart',
+        'السلة فارغة حالياً': 'Cart is empty currently',
+        'المحافظة (لتحديد مصاريف الشحن):': 'Governorate (for shipping costs):',
+        'القاهرة والجيزة (50 ج.م)': 'Cairo & Giza (50 EGP)',
+        'الإسكندرية ووجه بحري (70 ج.م)': 'Alexandria & North Coast (70 EGP)',
+        'محافظات الصعيد (100 ج.م)': 'Upper Egypt (100 EGP)',
+        'الإجمالي:': 'Total:',
+        'إتمام الدفع': 'Checkout',
+        'كلمة المرور الجديدة (اختياري):': 'New Password (Optional):',
+        'رفع الصورة وكسب 20 نقطة': 'Upload Photo & Win 20 Points',
+        'شارك صورتك': 'Share Your Photo',
+        'شهادة أصالة وجودة': 'Certificate of Authenticity',
+        'للسيد/ة:': 'To Mr/Ms:',
+        'التاريخ:': 'Date:',
+        'التوقيع:': 'Signature:',
+        'طباعة الشهادة': 'Print Certificate',
+        'إيصال دفع إلكتروني': 'Electronic Receipt',
+        'رقم الطلب:': 'Order No:',
+        'العميل:': 'Customer:',
+        'طريقة الدفع:': 'Payment Method:',
+        'رسوم الشحن:': 'Shipping Fees:',
+        'شكراً لتسوقكم معنا!': 'Thank you for shopping with us!',
+        'طباعة الإيصال': 'Print Receipt',
+        'عرض شهادة الأصالة': 'View Certificate',
+        'دخول الإدارة': 'Admin Login',
+        'دخول': 'Login',
+        'دراسة جدوى مبسطة': 'Simplified Feasibility Study',
+        'أدخل عدد القطع المطلوبة لمطعمك (طواجن وأطباق) لترى التوفير المتوقع.': 'Enter required pieces to see savings.',
+        'احسب التكلفة': 'Calculate Cost',
+        'التكلفة الإجمالية المعتادة:': 'Normal Total Cost:',
+        'التكلفة بعد خصم الجملة (20%):': 'Cost after discount (20%):',
+        'الوفر المتوقع:': 'Expected Savings:',
+        'فوائد إضافية:': 'Additional Benefits:',
+        'عمر افتراضي أطول بسبب متانة الفخار المعالج للحرارة.': 'Longer lifespan due to heat-treated pottery durability.',
+        'توفير في غاز التدفئة لاحتفاظ الفخار بالحرارة لمدة تزيد عن 45 دقيقة.': 'Savings in heating gas; pottery retains heat >45 mins.',
+        'تجربة بصرية تراثية ترفع من قيمة أطباقك المادية (Premium Pricing).': 'Heritage visual experience elevates dish value.',
+        'تغليف آمن وصديق للبيئة': 'Safe & Eco-friendly Packaging',
+        'نحرص على وصول قطع الفخار إليكم بأمان تام. نستخدم مواد تغليف صديقة للبيئة مثل الورق المقوى والقش لحمايتها من الصدمات، ونزينها بنقوش تراثية تعكس أصالة منتجاتنا.': 'We ensure pottery reaches you safely using eco-friendly materials.',
+        'تتبع رحلة طلبك': 'Track Your Order',
+        'تتبع الآن': 'Track Now',
+        'مرحلة التشكيل': 'Shaping Stage',
+        'يتم تشكيل القطعة يدوياً على عجلة الفخار بعناية فائقة.': 'Piece is carefully hand-shaped on the pottery wheel.',
+        'مرحلة التجفيف': 'Drying Stage',
+        'تجفف القطعة في الهواء الطلق بشكل طبيعي لضمان قوتها.': 'Piece is naturally air-dried to ensure strength.',
+        'الحرق في الفرن': 'Kiln Firing',
+        'يتم حرق القطعة في أفران مخصصة لاكتساب الصلابة.': 'Piece is fired in special kilns to gain hardness.',
+        'التغليف التراثي': 'Heritage Packaging',
+        'يتم تغليف القطعة بأمان باستخدام القش والمواد الصديقة للبيئة.': 'Piece is safely packed using eco-friendly materials.',
+        'قيد التوصيل': 'Out for Delivery',
+        'الطلب مع مندوب الشحن في الطريق إليك.': 'Order is with the courier on the way to you.',
+        'رقم الطلب غير صحيح أو غير موجود.': 'Order number is incorrect or not found.',
+        'حساب جديد': 'New Account',
+        'إنشاء حساب جديد': 'Create New Account',
+        'تسجيل الخروج': 'Logout',
+        'إضافة تقييم': 'Add Review',
+        'إرسال التقييم': 'Submit Review',
+        'بيانات التوصيل والدفع': 'Delivery & Payment Details',
+        'اختر طريقة الدفع': 'Choose Payment Method',
+        'الدفع عند الاستلام': 'Cash on Delivery',
+        'بطاقة ائتمان': 'Credit Card',
+        'إنستا باي (InstaPay)': 'InstaPay',
+        'فودافون كاش': 'Vodafone Cash',
+        'تحويل بنكي': 'Bank Transfer',
+        'أرفق صورة إيصال التحويل:': 'Attach Transfer Receipt:',
+        'تأكيد الطلب الآن': 'Confirm Order Now',
+        'وصف المنتج:': 'Product Description:',
+        'أضف إلى السلة': 'Add to Cart',
+        'إضافة منتج جديد': 'Add New Product',
+        'طواجن': 'Tagines',
+        'أطباق ومج': 'Plates & Mugs',
+        'ديكور وتحف': 'Decor & Antiques',
+        'الكل': 'All',
+        'صورة المنتج (اختياري - سيتم استخدام صورة افتراضية إن لم يتم الرفع):': 'Product Image (Optional):',
+        'حفظ المنتج': 'Save Product',
+        'صورة إيصال الدفع': 'Payment Receipt Image',
+        '✅ تأكيد الدفع': '✅ Approve Payment',
+        'طقم أطباق ريفي مزخرف': 'Rustic Decorated Plate Set',
+        'طقم أطباق عشاء فاخر بتصميم ريفي جذاب، يتميز بنقوش نباتية ذات ألوان ترابية هادئة (الأخضر والبني). يضفي لمسة من الدفء والجمال على مائدة الطعام.': 'Luxurious dinner plate set with an attractive rustic design, featuring calm earthy floral patterns. Adds a touch of warmth and beauty to the dining table.',
+        'طواجن ملونة بغطاء': 'Colorful Tagines with Lid',
+        'مجموعة من الطواجن الفخارية الملونة بألوان مبهجة (الأزرق، الأصفر، الأخضر) ومزينة بزخارف يدوية رائعة. تأتي بغطاء محكم للحفاظ على حرارة الطعام، وتعتبر إضافة مبهجة لأي مطبخ.': 'A set of colorful pottery tagines decorated with beautiful handmade patterns. Comes with a tight lid to keep food warm, a joyful addition to any kitchen.',
+        'فازات ديكور أندلسية': 'Andalusian Decor Vases',
+        'فازات فخارية طويلة مزخرفة بنقوش هندسية ونباتية معقدة مستوحاة من الفن الأندلسي العريق. تعتبر تحفة فنية تخطف الأنظار وتناسب أرقى ديكورات المنزل.': 'Tall pottery vases decorated with complex geometric and floral patterns inspired by ancient Andalusian art. An eye-catching masterpiece for home decor.',
+        'أكواب فخارية ملونة': 'Colorful Pottery Mugs',
+        'مجموعة من الأكواب (المجات) الفخارية ذات الطلاء الزجاجي اللامع بألوان صلبة ومتنوعة. تصميمها العملي بلمسات التقطير يمنحها طابعاً عفوياً وجميلاً لتقديم المشروبات.': 'A set of glazed pottery mugs in solid diverse colors. Practical design with drip touches gives it a spontaneous and beautiful character for serving drinks.',
+        'أواني طهي ريفية داكنة': 'Dark Rustic Cookware',
+        'تشكيلة من أواني الطهي الفخارية التقليدية غير المطلية باللون البني الداكن. تشمل أبريقات وطواجن عميقة مزينة بنقوش محفورة يدوياً، مثالية لمحبي الطهي التراثي الأصيل.': 'A collection of traditional unglazed dark brown pottery cookware. Includes jugs and deep tagines decorated with hand-carved patterns, ideal for authentic traditional cooking.',
+        'مج قهوة بنقشة الفراشة': 'Butterfly Pattern Coffee Mug',
+        'مج قهوة فخاري رائع مطلي بطبقة لامعة ومزين برسمة فراشة برتقالية زاهية مرسومة يدوياً. يتميز بتصميمه المميز ليكون كوبك المفضل للاستمتاع بقهوتك اليومية.': 'A wonderful glazed pottery coffee mug decorated with a bright orange hand-drawn butterfly. Features a unique design to be your favorite cup for daily coffee.',
+        'تحف ومزهريات مزخرفة': 'Decorated Antiques & Vases',
+        'مجموعة من المزهريات والتحف الفخارية الفاخرة المطلية بألوان زاهية ولامعة (كالتركواز والأزرق)، والمزينة بنقوش دقيقة لتكون قطعة فنية لا مثيل لها.': 'A collection of luxurious pottery vases and antiques painted in bright glossy colors (like turquoise and blue), and decorated with fine patterns to be an unparalleled artwork.',
+        'أطباق حائط مزخرفة': 'Decorated Wall Plates',
+        'أطباق فخارية مزخرفة بالكامل برسومات وزخارف يدوية مذهلة متعددة الألوان. مصممة لتُعلق على الحائط كتحف فنية أو لتوضع كزينة مركزية تضفي فخامة على المكان.': 'Fully decorated pottery plates with stunning multi-color hand drawings and patterns. Designed to be hung on the wall as art pieces or placed as a centerpiece.',
+        'جرات فخار طبيعي (قلل)': 'Natural Pottery Jugs (Qullas)',
+        'مجموعة من الجرات والأباريق الفخارية المصنوعة من الطين الطبيعي النقي بدون طلاء. مثالية لحفظ وتبريد الماء بطريقة صحية وطبيعية، وتتميز بتصميم تراثي أصيل.': 'A set of pottery jugs and pitchers made of pure natural clay without glaze. Ideal for storing and cooling water in a healthy natural way, with an authentic heritage design.',
+        'طواجن طهي تقليدية': 'Traditional Cooking Tagines',
+        'طواجن فخارية متينة للطبخ تأتي مع أغطية ومزينة بنقوش بسيطة من الأزهار البيضاء. مصنوعة لتحمل حرارة الفرن العالية ولتعطي الأكل نكهة الفخار الأصلية التي لا تقاوم.': 'Durable pottery cooking tagines with lids, decorated with simple white floral patterns. Made to withstand high oven heat and give food the irresistible original pottery flavor.',
+        'عذراً، هذه كل الكمية المتاحة في المخزن حالياً.': 'Sorry, this is all the available stock.',
+        'نفدت الكمية': 'Out of Stock',
+        'عرض التفاصيل': 'View Details',
+        'تعديل المنتج': 'Edit Product',
+        'لا توجد منتجات تطابق بحثك.': 'No products match your search.',
+        'ج.م': 'EGP',
+        'قطعة': 'pcs',
+        'فخار قرية تونس (الفيوم)': 'Tunis Village Pottery (Fayoum)',
+        'يتميز فخار الفيوم بألوانه الزاهية والمبهجة ورسوماته العفوية التي تعكس طبيعة الريف المصري الجميلة من طيور ونخيل.': 'Fayoum pottery is characterized by its bright and cheerful colors and spontaneous drawings that reflect the beautiful Egyptian countryside nature of birds and palm trees.',
+        'الفخار المزجج (الفسطاط)': 'Glazed Pottery (Fustat)',
+        'فخار الفسطاط يشتهر بطبقته الزجاجية اللامعة (التزجيج) وألوانه العميقة مثل الأزرق الفيروزي، ويتميز بنقوشه الإسلامية والهندسية الدقيقة.': 'Fustat pottery is famous for its shiny glass layer (glazing) and deep colors like turquoise blue, and features precise Islamic and geometric patterns.',
+        'الفخار التقليدي الأصيل (قنا)': 'Authentic Traditional Pottery (Qena)',
+        'الفخار القنائي هو الأقدم والأكثر أصالة، يتميز باللون الطبيعي للطين وعدم طلائه بالزجاج، مما يجعله مثالياً لتبريد المياه (مثل القلل والأزيار) بفضل مسامه الدقيقة.': 'Qena pottery is the oldest and most authentic, characterized by the natural color of clay and lack of glass coating, making it ideal for cooling water (like Qullas and Zirs) thanks to its fine pores.'
+    };
+    
+    const reverseTextTranslations = Object.fromEntries(Object.entries(textTranslations).map(([k, v]) => [v, k]));
+
+    let isTranslating = false; // Prevent recursive calls
+
     function applyLanguage(lang) {
+        if(isTranslating) return;
+        isTranslating = true;
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
         if(lang === 'en') {
@@ -163,17 +374,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // Auto translate other elements based on dictionary
-        document.querySelectorAll('.auto-translate').forEach(el => {
-            if(el.dataset.ar && el.dataset.en) {
-                el.innerText = lang === 'ar' ? el.dataset.ar : el.dataset.en;
+        // Auto translate placeholders without data-i18n-placeholder
+        document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
+            const pText = el.placeholder.trim();
+            if(lang === 'en' && textTranslations[pText]) {
+                el.placeholder = textTranslations[pText];
+            } else if(lang === 'ar' && reverseTextTranslations[pText]) {
+                el.placeholder = reverseTextTranslations[pText];
             }
         });
+
+        // Translate text nodes dynamically
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+        let node;
+        while(node = walker.nextNode()) {
+            const txt = node.nodeValue.trim();
+            if(!txt) continue;
+            
+            // Special handling for dynamic formats like "المتبقي: X قطعة"
+            if(lang === 'en') {
+                if(txt.startsWith('المتبقي: ') && txt.endsWith(' قطعة')) {
+                    node.nodeValue = node.nodeValue.replace('المتبقي: ', 'Remaining: ').replace(' قطعة', ' pcs');
+                } else if(textTranslations[txt]) {
+                    node.nodeValue = node.nodeValue.replace(txt, textTranslations[txt]);
+                }
+            } else {
+                if(txt.startsWith('Remaining: ') && txt.endsWith(' pcs')) {
+                    node.nodeValue = node.nodeValue.replace('Remaining: ', 'المتبقي: ').replace(' pcs', ' قطعة');
+                } else if(reverseTextTranslations[txt]) {
+                    node.nodeValue = node.nodeValue.replace(txt, reverseTextTranslations[txt]);
+                }
+            }
+        }
         
-        // Re-render things that depend on language
-        if(typeof renderProducts === 'function') renderProducts();
-        if(typeof renderAdminDashboard === 'function') renderAdminDashboard();
-        if(typeof updateCart === 'function') updateCart();
+        isTranslating = false;
     }
 
     if(langToggleBtn) {
@@ -223,16 +457,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Global State Management ---
     const defaultProducts = [
-        { id: 1, name: "طقم أطباق ريفي مزخرف", name_en: "Rustic Decorated Plate Set", category: "أطباق", category_en: "Plates", desc: "طقم أطباق عشاء فاخر بتصميم ريفي جذاب، يتميز بنقوش نباتية ذات ألوان ترابية هادئة (الأخضر والبني). يضفي لمسة من الدفء والجمال على مائدة الطعام.", desc_en: "Luxurious dinner plate set with an attractive rustic design, featuring calm earthy floral patterns. Adds a touch of warmth and beauty to the dining table.", price: 550, img: "img10.jpg", stock: 15, sold: 0 },
-        { id: 2, name: "طواجن ملونة بغطاء", name_en: "Colorful Tagines with Lid", category: "طواجن", category_en: "Tagines", desc: "مجموعة من الطواجن الفخارية الملونة بألوان مبهجة (الأزرق، الأصفر، الأخضر) ومزينة بزخارف يدوية رائعة. تأتي بغطاء محكم للحفاظ على حرارة الطعام، وتعتبر إضافة مبهجة لأي مطبخ.", desc_en: "A set of colorful pottery tagines decorated with beautiful handmade patterns. Comes with a tight lid to keep food warm, a joyful addition to any kitchen.", price: 450, img: "img11.jpg", stock: 10, sold: 2 },
-        { id: 3, name: "فازات ديكور أندلسية", name_en: "Andalusian Decor Vases", category: "ديكور", category_en: "Decor", desc: "فازات فخارية طويلة مزخرفة بنقوش هندسية ونباتية معقدة مستوحاة من الفن الأندلسي العريق. تعتبر تحفة فنية تخطف الأنظار وتناسب أرقى ديكورات المنزل.", desc_en: "Tall pottery vases decorated with complex geometric and floral patterns inspired by ancient Andalusian art. An eye-catching masterpiece for home decor.", price: 380, img: "img12.jpg", stock: 8, sold: 5 },
-        { id: 4, name: "أكواب فخارية ملونة", name_en: "Colorful Pottery Mugs", category: "أطباق", category_en: "Plates", desc: "مجموعة من الأكواب (المجات) الفخارية ذات الطلاء الزجاجي اللامع بألوان صلبة ومتنوعة. تصميمها العملي بلمسات التقطير يمنحها طابعاً عفوياً وجميلاً لتقديم المشروبات.", desc_en: "A set of glazed pottery mugs in solid diverse colors. Practical design with drip touches gives it a spontaneous and beautiful character for serving drinks.", price: 150, img: "img13.jpg", stock: 25, sold: 10 },
-        { id: 5, name: "أواني طهي ريفية داكنة", name_en: "Dark Rustic Cookware", category: "طواجن", category_en: "Tagines", desc: "تشكيلة من أواني الطهي الفخارية التقليدية غير المطلية باللون البني الداكن. تشمل أبريقات وطواجن عميقة مزينة بنقوش محفورة يدوياً، مثالية لمحبي الطهي التراثي الأصيل.", desc_en: "A collection of traditional unglazed dark brown pottery cookware. Includes jugs and deep tagines decorated with hand-carved patterns, ideal for authentic traditional cooking.", price: 650, img: "img14.jpg", stock: 8, sold: 4 },
-        { id: 6, name: "مج قهوة بنقشة الفراشة", name_en: "Butterfly Pattern Coffee Mug", category: "أطباق", category_en: "Plates", desc: "مج قهوة فخاري رائع مطلي بطبقة لامعة ومزين برسمة فراشة برتقالية زاهية مرسومة يدوياً. يتميز بتصميمه المميز ليكون كوبك المفضل للاستمتاع بقهوتك اليومية.", desc_en: "A wonderful glazed pottery coffee mug decorated with a bright orange hand-drawn butterfly. Features a unique design to be your favorite cup for daily coffee.", price: 220, img: "img15.jpg", stock: 12, sold: 3 },
-        { id: 7, name: "تحف ومزهريات مزخرفة", name_en: "Decorated Antiques & Vases", category: "ديكور", category_en: "Decor", desc: "مجموعة من المزهريات والتحف الفخارية الفاخرة المطلية بألوان زاهية ولامعة (كالتركواز والأزرق)، والمزينة بنقوش دقيقة لتكون قطعة فنية لا مثيل لها.", desc_en: "A collection of luxurious pottery vases and antiques painted in bright glossy colors (like turquoise and blue), and decorated with fine patterns to be an unparalleled artwork.", price: 420, img: "img16.jpg", stock: 7, sold: 4 },
-        { id: 8, name: "أطباق حائط مزخرفة", name_en: "Decorated Wall Plates", category: "ديكور", category_en: "Decor", desc: "أطباق فخارية مزخرفة بالكامل برسومات وزخارف يدوية مذهلة متعددة الألوان. مصممة لتُعلق على الحائط كتحف فنية أو لتوضع كزينة مركزية تضفي فخامة على المكان.", desc_en: "Fully decorated pottery plates with stunning multi-color hand drawings and patterns. Designed to be hung on the wall as art pieces or placed as a centerpiece.", price: 580, img: "img17.jpg", stock: 6, sold: 2 },
-        { id: 9, name: "جرات فخار طبيعي (قلل)", name_en: "Natural Pottery Jugs (Qullas)", category: "ديكور", category_en: "Decor", desc: "مجموعة من الجرات والأباريق الفخارية المصنوعة من الطين الطبيعي النقي بدون طلاء. مثالية لحفظ وتبريد الماء بطريقة صحية وطبيعية، وتتميز بتصميم تراثي أصيل.", desc_en: "A set of pottery jugs and pitchers made of pure natural clay without glaze. Ideal for storing and cooling water in a healthy natural way, with an authentic heritage design.", price: 180, img: "img18.jpg", stock: 20, sold: 15 },
-        { id: 10, name: "طواجن طهي تقليدية", name_en: "Traditional Cooking Tagines", category: "طواجن", category_en: "Tagines", desc: "طواجن فخارية متينة للطبخ تأتي مع أغطية ومزينة بنقوش بسيطة من الأزهار البيضاء. مصنوعة لتحمل حرارة الفرن العالية ولتعطي الأكل نكهة الفخار الأصلية التي لا تقاوم.", desc_en: "Durable pottery cooking tagines with lids, decorated with simple white floral patterns. Made to withstand high oven heat and give food the irresistible original pottery flavor.", price: 350, img: "img19.jpg", stock: 10, sold: 5 }
+        { id: 1, name: "طقم أطباق ريفي مزخرف", category: "أطباق", desc: "طقم أطباق عشاء فاخر بتصميم ريفي جذاب، يتميز بنقوش نباتية ذات ألوان ترابية هادئة (الأخضر والبني). يضفي لمسة من الدفء والجمال على مائدة الطعام.", price: 550, img: "img10.jpg", stock: 15, sold: 0 },
+        { id: 2, name: "طواجن ملونة بغطاء", category: "طواجن", desc: "مجموعة من الطواجن الفخارية الملونة بألوان مبهجة (الأزرق، الأصفر، الأخضر) ومزينة بزخارف يدوية رائعة. تأتي بغطاء محكم للحفاظ على حرارة الطعام، وتعتبر إضافة مبهجة لأي مطبخ.", price: 450, img: "img11.jpg", stock: 10, sold: 2 },
+        { id: 3, name: "فازات ديكور أندلسية", category: "ديكور", desc: "فازات فخارية طويلة مزخرفة بنقوش هندسية ونباتية معقدة مستوحاة من الفن الأندلسي العريق. تعتبر تحفة فنية تخطف الأنظار وتناسب أرقى ديكورات المنزل.", price: 380, img: "img12.jpg", stock: 8, sold: 5 },
+        { id: 4, name: "أكواب فخارية ملونة", category: "أطباق", desc: "مجموعة من الأكواب (المجات) الفخارية ذات الطلاء الزجاجي اللامع بألوان صلبة ومتنوعة. تصميمها العملي بلمسات التقطير يمنحها طابعاً عفوياً وجميلاً لتقديم المشروبات.", price: 150, img: "img13.jpg", stock: 25, sold: 10 },
+        { id: 5, name: "أواني طهي ريفية داكنة", category: "طواجن", desc: "تشكيلة من أواني الطهي الفخارية التقليدية غير المطلية باللون البني الداكن. تشمل أبريقات وطواجن عميقة مزينة بنقوش محفورة يدوياً، مثالية لمحبي الطهي التراثي الأصيل.", price: 650, img: "img14.jpg", stock: 8, sold: 4 },
+        { id: 6, name: "مج قهوة بنقشة الفراشة", category: "أطباق", desc: "مج قهوة فخاري رائع مطلي بطبقة لامعة ومزين برسمة فراشة برتقالية زاهية مرسومة يدوياً. يتميز بتصميمه المميز ليكون كوبك المفضل للاستمتاع بقهوتك اليومية.", price: 220, img: "img15.jpg", stock: 12, sold: 3 },
+        { id: 7, name: "تحف ومزهريات مزخرفة", category: "ديكور", desc: "مجموعة من المزهريات والتحف الفخارية الفاخرة المطلية بألوان زاهية ولامعة (كالتركواز والأزرق)، والمزينة بنقوش دقيقة لتكون قطعة فنية لا مثيل لها.", price: 420, img: "img16.jpg", stock: 7, sold: 4 },
+        { id: 8, name: "أطباق حائط مزخرفة", category: "ديكور", desc: "أطباق فخارية مزخرفة بالكامل برسومات وزخارف يدوية مذهلة متعددة الألوان. مصممة لتُعلق على الحائط كتحف فنية أو لتوضع كزينة مركزية تضفي فخامة على المكان.", price: 580, img: "img17.jpg", stock: 6, sold: 2 },
+        { id: 9, name: "جرات فخار طبيعي (قلل)", category: "ديكور", desc: "مجموعة من الجرات والأباريق الفخارية المصنوعة من الطين الطبيعي النقي بدون طلاء. مثالية لحفظ وتبريد الماء بطريقة صحية وطبيعية، وتتميز بتصميم تراثي أصيل.", price: 180, img: "img18.jpg", stock: 20, sold: 15 },
+        { id: 10, name: "طواجن طهي تقليدية", category: "طواجن", desc: "طواجن فخارية متينة للطبخ تأتي مع أغطية ومزينة بنقوش بسيطة من الأزهار البيضاء. مصنوعة لتحمل حرارة الفرن العالية ولتعطي الأكل نكهة الفخار الأصلية التي لا تقاوم.", price: 350, img: "img19.jpg", stock: 10, sold: 5 }
     ];
 
     // Force update local storage for this version to apply new data structure
@@ -343,28 +577,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const outOfStock = p.stock <= 0;
             const card = document.createElement('div');
             card.className = 'glass-card product-card';
-            const name = currentLang === 'en' ? (p.name_en || p.name) : p.name;
-            const desc = currentLang === 'en' ? (p.desc_en || p.desc) : p.desc;
-            const egp = currentLang === 'en' ? 'EGP' : 'ج.م';
-            const outOfStockTxt = currentLang === 'en' ? 'Out of Stock' : 'نفدت الكمية';
-            const remainingTxt = currentLang === 'en' ? `Remaining: ${p.stock} pcs` : `المتبقي: ${p.stock} قطعة`;
-            const viewDetailsBtn = currentLang === 'en' ? 'View Details' : 'عرض التفاصيل';
-            const editBtn = currentLang === 'en' ? 'Edit Product' : 'تعديل المنتج';
-            
             card.innerHTML = `
                 <div class="product-image">
-                    <img src="${p.img}" alt="${name}" style="width: 100%; height: 100%; object-fit: cover; ${outOfStock ? 'filter: grayscale(1);' : ''}">
+                    <img src="${p.img}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover; ${outOfStock ? 'filter: grayscale(1);' : ''}">
                 </div>
                 <div class="product-info">
-                    <h3>${name}</h3>
-                    <p style="font-family: var(--font-ar); color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.4;">${desc}</p>
-                    <div class="stock-info">${outOfStock ? outOfStockTxt : remainingTxt}</div>
+                    <h3>${p.name}</h3>
+                    <p style="font-family: var(--font-ar); color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.4;">${p.desc}</p>
+                    <div class="stock-info">${outOfStock ? 'نفدت الكمية' : `المتبقي: ${p.stock} قطعة`}</div>
                     <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                        <p class="price" style="margin:0;">${p.price} ${egp}</p>
+                        <p class="price" style="margin:0;">${p.price} ج.م</p>
                         <button class="btn-icon add-to-cart-btn" data-id="${p.id}" ${outOfStock ? 'disabled style="background:#ccc; cursor:not-allowed;"' : ''}>+</button>
                     </div>
-                    <button class="btn-primary view-details-btn" style="width:100%; margin-top:10px; padding: 0.5rem; font-size: 1rem;" data-id="${p.id}">${viewDetailsBtn}</button>
-                    ${isAdmin ? `<button class="btn-sm btn-edit" style="width:100%; margin-top:10px;" onclick="openAdminProductModal(${p.id})">${editBtn}</button>` : ''}
+                    <button class="btn-primary view-details-btn" style="width:100%; margin-top:10px; padding: 0.5rem; font-size: 1rem;" data-id="${p.id}">عرض التفاصيل</button>
+                    ${isAdmin ? `<button class="btn-sm btn-edit" style="width:100%; margin-top:10px;" onclick="openAdminProductModal(${p.id})">تعديل المنتج</button>` : ''}
                 </div>
             `;
             productsContainer.appendChild(card);
@@ -373,6 +599,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const imgEl = card.querySelector('img');
             imgEl.addEventListener('click', () => openLightbox(p.img));
         });
+
+        // Call applyLanguage lightly just for text nodes of newly rendered elements
+        applyLanguage(currentLang);
 
         // Re-attach Add to Cart events
         document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
@@ -584,6 +813,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
             }
+            
+            applyLanguage(currentLang);
         } else {
             adminDashboardOverlay.classList.remove('active');
         }
@@ -995,6 +1226,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         totalPriceEl.innerText = total;
+        applyLanguage(currentLang);
     }
 
     window.updateCartItemQty = function(index, change) {
@@ -1512,6 +1744,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 regionTitle.innerText = data.title;
                 regionDesc.innerText = data.desc;
                 regionDisplay.style.opacity = '1';
+                applyLanguage(currentLang);
             }, 300);
         });
     });
